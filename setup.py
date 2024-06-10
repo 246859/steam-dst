@@ -6,10 +6,10 @@ from os import path
 
 here = path.abspath(path.dirname(__file__))
 with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
-    long_description = f.read()\
-                        .replace('.io/en/latest/', '.io/en/stable/')\
-                        .replace('?badge=latest', '?badge=stable')\
-                        .replace('projects/steam/badge/?version=latest', 'projects/steam/badge/?version=stable')
+    long_description = f.read() \
+        .replace('.io/en/latest/', '.io/en/stable/') \
+        .replace('?badge=latest', '?badge=stable') \
+        .replace('projects/steam/badge/?version=latest', 'projects/steam/badge/?version=stable')
 with open(path.join(here, 'steam/__init__.py'), encoding='utf-8') as f:
     __version__ = f.readline().split('"')[1]
 
@@ -34,7 +34,7 @@ install_extras = {
 }
 
 setup(
-    name='steam',
+    name='steam-dst',
     version=__version__,
     description='Module for interacting with various Steam features',
     long_description=long_description,
@@ -57,7 +57,7 @@ setup(
         'Programming Language :: Python :: Implementation :: PyPy',
     ],
     keywords='valve steam steamid api webapi steamcommunity',
-    packages=['steam'] + ['steam.'+x for x in find_packages(where='steam')],
+    packages=['steam'] + ['steam.' + x for x in find_packages(where='steam')],
     install_requires=install_requires,
     extras_require=install_extras,
     zip_safe=True,
